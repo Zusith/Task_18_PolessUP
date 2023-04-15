@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-string ipv4 = "192.168.1.1";
+string ipv4 = "192.168.11";
 string ipv6 = "2001:0db8:85a3:0000:0000:8a2e:0370:7334";
 string neither = "123.256.-2.13";
 Console.WriteLine("Ввод ipv4: " + ipv4);
@@ -13,10 +13,10 @@ Console.WriteLine(IpCheck(neither));
 
 string IpCheck(string ip)
 {
-    if (ip.Contains('.') && IpV4check(ip))
+    if (IpV4check(ip))
         return "IPv4";
 
-    if (ip.Contains(':') && Regex.Matches(ip, ":").Count == 7 && IpV6check(ip))
+    if (IpV6check(ip))
         return "IPv6";
 
     return "Neither";
@@ -25,6 +25,7 @@ string IpCheck(string ip)
 
 bool IpV4check(string ip)
 {
+    if (!ip.Contains('.')) return false;
     string[] ipmass = ip.Split('.');
     if (ipmass.Length != 4) return false;
 
@@ -45,7 +46,9 @@ bool IpV4check(string ip)
 
 bool IpV6check(string ip)
 {
+    if (!ip.Contains(':') && Regex.Matches(ip, ":").Count != 7) return false;
     string[] ipmass = ip.Split(':');
+
     for (int index = 0; index < ipmass.Length; index++)
     {
         if (ipmass[index].Length >= 1 && ipmass[index].Length <= 4) 
