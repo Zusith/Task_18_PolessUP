@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-string ipv4 = "192.168.11";
+string ipv4 = "192.168.1.1";
 string ipv6 = "2001:0db8:85a3:0000:0000:8a2e:0370:7334";
 string neither = "123.256.-2.13";
 Console.WriteLine("Ввод ipv4: " + ipv4);
