@@ -9,6 +9,8 @@ Console.WriteLine("Ввод ipv6: " + ipv6);
 Console.WriteLine(IpCheck(ipv6));
 Console.WriteLine("Ввод неподходящей строки: " + neither);
 Console.WriteLine(IpCheck(neither));
+Console.ReadLine();
+
 
 
 string IpCheck(string ip)
